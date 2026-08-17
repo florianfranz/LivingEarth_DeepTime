@@ -13,9 +13,9 @@ CONFIG_PATH = Path(__file__).resolve().parent.parent / "config.json"
 with open(CONFIG_PATH, "r") as f:
     _config = json.load(f)
 
-climate_folder = _config["climate_folder"]
+climate_folder = _config["climate_output_folder"]
 paleo_folder = _config["paleo_folder"]
-output_base_folder = _config["output_base_folder"]
+output_base_folder = _config["LE_inputs"]
 
 os.makedirs(output_base_folder, exist_ok=True)
 
