@@ -1,0 +1,14 @@
+{
+"type": "FeatureCollection",
+"name": "reproj_latitudes",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:ESRI::54034" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Equator" }, "geometry": { "type": "LineString", "coordinates": [ [ -20037508.342789243906736, 0.0 ], [ 20037508.342789243906736, 0.0 ] ] } },
+{ "type": "Feature", "properties": { "name": "Polar_N" }, "geometry": { "type": "LineString", "coordinates": [ [ -20037508.342789243906736, 5505099.650439624674618 ], [ 20037508.342789243906736, 5505099.650439624674618 ] ] } },
+{ "type": "Feature", "properties": { "name": "Polar_S" }, "geometry": { "type": "LineString", "coordinates": [ [ -20037508.342789243906736, -5505099.650439627468586 ], [ 20037508.342789243906736, -5505099.650439627468586 ] ] } },
+{ "type": "Feature", "properties": { "name": "Temperate_N" }, "geometry": { "type": "LineString", "coordinates": [ [ -20037508.342789243906736, 4079869.92469940148294 ], [ 20037508.342789243906736, 4079869.92469940148294 ] ] } },
+{ "type": "Feature", "properties": { "name": "Temperate_S" }, "geometry": { "type": "LineString", "coordinates": [ [ -20037508.342789243906736, -4079869.924699402414262 ], [ 20037508.342789243906736, -4079869.924699402414262 ] ] } },
+{ "type": "Feature", "properties": { "name": "Subtropical_N" }, "geometry": { "type": "LineString", "coordinates": [ [ -20037508.342789243906736, 2528044.899469448253512 ], [ 20037508.342789243906736, 2528044.899469448253512 ] ] } },
+{ "type": "Feature", "properties": { "name": "Subtropical_S" }, "geometry": { "type": "LineString", "coordinates": [ [ -20037508.342789243906736, -2528044.899469450116158 ], [ 20037508.342789243906736, -2528044.899469450116158 ] ] } }
+]
+}
