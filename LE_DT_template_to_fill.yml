@@ -1,0 +1,85 @@
+# Config file for running LE LCCS rules on Open Data Cube
+# Implementation for Living Earth in Deep Time
+# NOTE: this is a TEMPLATE - {age} is substituted by batch_run_lccs.py at run time
+
+classification_scheme: au
+
+processing_datetime: 2026-03-12
+producer: unige
+product_family: lc
+dataset_version: 1.0.0
+collection_number: 1
+platform: LivingSpace
+instrument: unknown
+product_name: unige_livingearth_deeptime_v1
+region_code: ch
+region_specific_lccs_code: global
+
+extent:
+    min_x: -20040000
+    max_x: 20040000
+    min_y: -6360000
+    max_y: 6360000
+
+resolution: [10000, -10000]
+crs: "ESRI:54034"
+
+# Convention: year-12-31 if annual land cover map.
+classification_time: 2000-12-31
+
+Outputs:
+    level3_data:
+        export_class: gridded_export.LEExportGDAL
+        output_file: "output_path/level3_LE_DT.tif"
+        variable_names_list: ["level3"]
+
+    level3_rgb:
+        export_class: gridded_export.LEExportGDAL
+        output_file: "output_path/level3_out_rgb_LE_DT6.tif"
+
+    level4_data:
+        export_class: gridded_export.LEExportGDAL
+        output_file: "output_path/level4_out_LE_DT.tif"
+        exclude_variable_names_list: ["Red", "Green", "Blue", "Alpha"]
+
+    level4_rgb:
+        export_class: gridded_export.LEExportGDAL
+        output_file: "output_path/level4_out_rgb_LE_DT.tif"
+
+L3layers:
+    vegetat_veg_cat:
+        ingest_class: gridded_ingest.LEIngestGDAL
+        input_file: LE_inputs_path/fractional_vegetation_{age}.tif
+        resampling: mode
+        expstr: "(band > 0.1)"
+
+    aquatic_wat_cat:
+        ingest_class: gridded_ingest.LEIngestGDAL
+        input_file: LE_inputs_path/aquatic_wat_cat_{age}.tif
+        resampling: mode
+        expstr: "(band > 0)"
+
+    cultman_agr_cat:
+        ingest_class: gridded_ingest.LEIngestGDAL
+        input_file: LE_inputs_path/blank_raster_all_zeroes.tif
+        resampling: mode
+        expstr: "(band > 0)"
+
+    artific_urb_cat:
+        ingest_class: gridded_ingest.LEIngestGDAL
+        input_file: LE_inputs_path//blank_raster_all_zeroes.tif
+        resampling: mode
+        expstr: "(band > 0)"
+
+L4layers:
+    lifeform_veg_cat:
+        ingest_class: gridded_ingest.LEIngestGDAL
+        input_file: LE_inputs_path/lifeform_veg_cat_{age}_fixed.tif
+        resampling: mode
+
+    waterstt_wat_cat:
+        ingest_class: gridded_ingest.LEIngestGDAL
+        input_file: LE_inputs_path/waterstt_wat_cat_{age}_fixed.tif
+        resampling: mode
+
+
