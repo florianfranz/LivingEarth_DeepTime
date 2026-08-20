@@ -27,7 +27,6 @@ ages = ["2000", "2006", "2011", "2015", "2020", "2033", "2040", "2048",
         "2500", "2518", "2535", "2545"]
 
 
-
 # ==================
 
 def load_layer(path, name):
@@ -129,9 +128,11 @@ for age in ages:
     paleo = load_layer(paleo_path, f"palaeogeography_{age}")
     ice = load_layer(ice_path, f"sea_ice_cover_{age}")
 
-    # ---- GET UNIFIED ALIGNMENT PARAMS ----
-    extent, crs, res_x, res_y = get_aligned_params(paleo)
-    print(f"   Target Alignment: Res={res_x:.4f}x{res_y:.4f}, CRS={crs}")
+
+    extent = "-20040000,20040000,-6360000,6360000 [ESRI:54034]"
+    crs = "ESRI:54034"
+    res_x = 10000
+    res_y = 10000
 
     try:
         # ========================
@@ -139,12 +140,15 @@ for age in ages:
         # ========================
         waterstt_temp = f"{output_folder}/waterstt_wat_cat_{age}.tif"
         waterstt_expr = (
-            f'("sea_ice_cover_{age}@1" > 0.1) * 3 + '
+            f'(("sea_ice_cover_{age}@1" > 0.1) AND ("palaeogeography_{age}@1" < 0)) * 3 + '
             f'(("sea_ice_cover_{age}@1" <= 0.1) AND ("snow_depth_{age}@1" > 0.01) AND ("palaeogeography_{age}@1" >= 0)) * 2 + '
             f'(("sea_ice_cover_{age}@1" <= 0.1) AND ("palaeogeography_{age}@1" < 0)) * 1'
         )
         run_calc_aligned([ice, snow, paleo], waterstt_expr, extent, crs, res_x, res_y, waterstt_temp, nodata_val=-9999)
         clean_no_data(waterstt_temp, target_dtype='uint8', fill_value=0)
+
+
+
 
         # ========================
         # STEP 2: AQUATIC MASK
