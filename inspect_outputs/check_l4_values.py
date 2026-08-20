@@ -15,7 +15,7 @@ ages = ["2000", "2006", "2011", "2015", "2020", "2033", "2040", "2048",
         "2383", "2393", "2408", "2420", "2444", "2463", "2475", "2489",
         "2500", "2518", "2535", "2545"]
 
-ages = ["2120"]
+
 
 le_outputs = _config["LE_outputs"]
 unique_vals = []
@@ -30,5 +30,9 @@ for age in ages:
             band = src.read(i)
             vals, counts = np.unique(band, return_counts=True)
             print(f"Band {i}:", dict(zip(vals.tolist(), counts.tolist())))
+            if i == 4:
+                for val in vals:
+                    if val not in unique_vals:
+                        unique_vals.append(val)
 
 print(f"Unique values: {unique_vals}")
