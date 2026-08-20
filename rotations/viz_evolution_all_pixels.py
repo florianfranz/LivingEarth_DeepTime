@@ -23,16 +23,15 @@ import pandas as pd
 import plotly.graph_objects as go
 
 LEVEL4_STYLE = {
-    19:  ("Nat. Terrestrial Veg.: Generic",       "#4d7a1a"),  # placeholder - not in your .qml
     20:  ("Nat. Terrestrial Veg.: Woody",          "#009100"),
     21:  ("Nat. Terrestrial Veg.: Herbaceous",     "#79de13"),
-    55:  ("Nat. Aquatic Veg.: Generic",           "#9acdb9"),
     56:  ("Nat Aquatic Veg.: Woody",               "#67897b"),
     94:  ("Nat. Bare Surface",                      "#daa520"),
-    98:  ("Water: Sea-ice",                       "#a6bddb"),
+    98:  ("Water: Wet Soil",                       "#8a6a96"),
     99:  ("Water: Liquid",                         "#30b2ef"),
     105: ("Water: Snow",                           "#efffff"),
-    255: ("No Data",                               "#cccccc"),  # placeholder - not in your .qml
+    106: ("Water: Sea-ice",                         "#a6bddb"),
+    255: ("No Data",                               "#cccccc"),
 }
 
 # Labels/colors for the two non-land-cover buckets build_change_matrix adds.

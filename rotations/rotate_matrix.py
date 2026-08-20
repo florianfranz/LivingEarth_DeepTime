@@ -78,7 +78,7 @@ LAYER_RE = re.compile(r"^Plates(\d+)preRot(\d+)$")
 ANGLE_SIGN = 1.0
 
 BAND = 4
-VALID_CODES = [19, 20, 21, 55, 94, 98, 99, 105, 255]
+VALID_CODES = [20, 21, 56, 94, 98, 99, 105, 106, 255]
 NODATA_CODE = 255
 
 UNMAPPED_LABEL = "unmapped_plate"   # pixel not inside any plate polygon
@@ -116,16 +116,33 @@ def build_layer_lookup(gpkg_path: str) -> dict:
     return lookup
 
 
+# Known mislabeled ages in the GeoPackage: the layer that should represent
+# `key` Ma is actually encoded in the source data as `value` Ma.
+# e.g. the geopackage layer meant for 331 Ma is named "Plates330preRot..."
+LAYER_AGE_OVERRIDES = {
+    331: 330,
+}
+
+
 def get_layer_for_age(gpkg_path: str, age: float) -> str:
     lookup = build_layer_lookup(gpkg_path)
     age_int = int(round(age))
-    if age_int not in lookup:
+
+    # Redirect known-bad ages to the age they're actually stored under.
+    lookup_age = LAYER_AGE_OVERRIDES.get(age_int, age_int)
+
+    if lookup_age not in lookup:
         available = ", ".join(str(a) for a in sorted(lookup))
         raise ValueError(
             f"No layer found starting from age {age} Ma. "
             f"Available 'from' ages are: {available}"
         )
-    return lookup[age_int]
+
+    if lookup_age != age_int:
+        print(f"  [note] age {age_int} Ma has no matching layer; using layer "
+              f"'{lookup[lookup_age]}' (mislabeled as {lookup_age} Ma in the source data)")
+
+    return lookup[lookup_age]
 
 
 # ============================================================================
@@ -486,6 +503,7 @@ if __name__ == "__main__":
         "2383", "2393", "2408", "2420", "2444", "2463", "2475", "2489",
         "2500", "2518", "2535", "2545"
     ]
+
 
     # Convert to integers first for easier math, then to float Ma
     ages_int = [int(y) for y in years_list]
