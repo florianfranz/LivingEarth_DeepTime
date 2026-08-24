@@ -29,8 +29,8 @@ layers = [
         {
             0: ("Land (dry)", "#c2a679"),
             1: ("Open water (ice-free)", "#3182bd"),
-            2: ("Snow-covered land", "#e5f5f9"),
-            3: ("Sea ice", "#a6bddb"),
+            2: ("Snow-covered land", "#EFFFFF"),
+            3: ("Sea ice", "#A6BDDB"),
         },
     ),
     (
@@ -89,18 +89,18 @@ for ax, (title, fname, kind, spec) in zip(axes, layers):
             loc="upper center",
             bbox_to_anchor=(0.5, -0.02),
             ncol=1,
-            fontsize=8,
+            fontsize=16,
             frameon=False,
         )
     else:
         im = ax.imshow(data, cmap="YlGn", vmin=0, vmax=1)
         cbar = fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
-        cbar.set_label(spec, fontsize=8)
+        cbar.set_label(spec, fontsize=16)
 
-    ax.set_title(title)
+    ax.set_title(title,fontsize=20)
     ax.axis("off")
 
-plt.tight_layout(rect=[0, 0, 1, 0.96])
+plt.tight_layout()
 
 output_path = os.path.join(folder, f"outputs_plot_{age}.png")
 plt.savefig(output_path, dpi=150, bbox_inches="tight")
