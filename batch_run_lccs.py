@@ -13,7 +13,7 @@ ages = ["2000", "2006", "2011", "2015", "2020", "2033", "2040", "2048",
         "2383", "2393", "2408", "2420", "2444", "2463", "2475", "2489",
         "2500", "2518", "2535", "2545"]
 
-CONFIG_PATH = Path(__file__).resolve().parent.parent / "config.json"
+CONFIG_PATH = Path(__file__).resolve().parent/ "config.json"
 with open(CONFIG_PATH, "r") as f:
     _config = json.load(f)
 
