@@ -19,16 +19,15 @@ LEVEL4_BAND = 4  # The band containing the classification codes
 # --- Legend & Style (Exactly as defined in your previous script) ---
 # Format: Code: (Label, Hex Color)
 LEVEL4_STYLE = {
-    19:  ("Nat. Terrestrial Veg.: Generic",       "#4d7a1a"),  # placeholder - not in your .qml
     20:  ("Nat. Terrestrial Veg.: Woody",          "#009100"),
     21:  ("Nat. Terrestrial Veg.: Herbaceous",     "#79de13"),
-    55:  ("Nat. Aquatic Veg.: Generic",           "#9acdb9"),
     56:  ("Nat Aquatic Veg.: Woody",               "#67897b"),
     94:  ("Nat. Bare Surface",                      "#daa520"),
-    98:  ("Water: Sea-ice",                       "#a6bddb"),
+    98:  ("Water: Wet Soil",                       "#8a6a96"),
     99:  ("Water: Liquid",                         "#30b2ef"),
     105: ("Water: Snow",                           "#efffff"),
-    255: ("No Data",                               "#cccccc"),  # placeholder - not in your .qml
+    106: ("Water: Sea-ice",                         "#a6bddb"),
+    255: ("No Data",                               "#cccccc"),
 }
 
 
@@ -80,7 +79,7 @@ def plot_single_map(age_str):
         plot_data[data == code] = idx
 
     # 4. Plotting
-    fig, ax = plt.subplots(figsize=(10, 3))
+    fig, ax = plt.subplots(figsize=(12, 3))
 
     # Plot the re-indexed data
     # vmin/vmax ensure the colormap stretches exactly across our defined classes
@@ -112,6 +111,7 @@ def plot_single_map(age_str):
     out_name = f"level4_map_age_{age_str}.png"
     plt.savefig(out_name, dpi=300, bbox_inches='tight')
     print(f"Map saved to {out_name}")
+    plt.tight_layout()
     plt.show()
 
 
