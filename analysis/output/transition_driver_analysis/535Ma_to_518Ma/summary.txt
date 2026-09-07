@@ -1,0 +1,78 @@
+535 → 518 Ma
+
+Major land-cover transitions
+============================
+99 -> subducted : 1,324,295 px
+new_crust -> 99 : 1,222,954 px
+new_crust -> 106 : 238,258 px
+94 -> 99 : 144,183 px
+99 -> 106 : 108,071 px
+106 -> subducted : 103,641 px
+99 -> 94 : 93,744 px
+94 -> 105 : 74,600 px
+94 -> subducted : 71,927 px
+new_crust -> 105 : 54,254 px
+
+Spatially explicit tectonic metrics
+===================================
+Mean distance: 1692.4 km
+P95 distance: 4133.3 km
+Mean poleward shift: -2.655
+Mean delta altitude: 394.2
+Subduction fraction: 30.71%
+
+Spatially explicit climate metrics
+===================================
+Mean delta temperature: -0.822
+Mean delta precipitation: 20.726
+
+Global Earth-system indicators
+==============================
+delta_CO2_ppm: -3.232e+02 (z=-0.42)
+delta_Sea_Level_dSL: 8.816e+01 (z=1.77)
+delta_Coastline_length: 5.147e+05 (z=-0.05)
+delta_Continental_Shelves_Area: 1.985e+12 (z=0.25)
+delta_Land_area: -8.974e+12 (z=-0.86)
+delta_Polar_Land_Area: 3.109e+12 (z=0.79)
+delta_Temperate_Land_Area: -5.876e+12 (z=-1.19)
+delta_Subtropical_Land_Area: -5.725e+12 (z=-1.39)
+delta_Tropical_Land_Area: -5.516e+11 (z=-0.11)
+delta_High_Altitude_Area: -6.036e+12 (z=-3.01)
+delta_Continents_Number: 0.000e+00 (z=-0.02)
+
+Driver interpretation
+====================
+Tectonic influence score: 2.06
+Climate influence score: 0.62
+Continental configuration score: 0.59
+
+Strongest interval anomalies
+----------------------------
+mean poleward: Z=-3.17
+High Altitude Area: Z=-3.01
+median poleward: Z=-2.93
+p95 distance: Z=2.38
+Ridge Depth: Z=1.94
+Sea Level dSL: Z=1.77
+subduction fraction: Z=1.76
+Southern Land Area: Z=-1.68
+mean alt: Z=1.68
+mean distance: Z=1.63
+
+Interpretation
+--------------
+The interval is characterised by exceptionally strong tectonic reorganisation relative to the rest of the Phanerozoic.
+Climate-related indicators remain relatively close to long-term background conditions.
+Continental configuration remained comparatively stable.
+Sea level rose substantially relative to typical Phanerozoic transitions, which may favour inundation and coastal reorganisation.
+Crustal displacement distances are among the highest of the entire Phanerozoic time series.
+Subduction activity is unusually high for this transition.
+
+Synthesis
+---------
+Primary controls inferred from anomaly strength:
+1. tectonics (2.06)
+2. climate (0.62)
+3. continental_configuration (0.59)
+
+This interpretation does not imply causality at the pixel scale. Rather, it provides an interval-scale explanation for why the overall land-cover transition system and associated Sankey diagram look the way they do.

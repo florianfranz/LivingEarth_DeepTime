@@ -1,0 +1,75 @@
+475 → 463 Ma
+
+Major land-cover transitions
+============================
+99 -> subducted : 1,107,108 px
+new_crust -> 99 : 1,104,775 px
+99 -> 94 : 127,542 px
+94 -> 99 : 92,094 px
+new_crust -> 94 : 62,957 px
+94 -> subducted : 52,560 px
+105 -> subducted : 45,906 px
+new_crust -> 105 : 41,390 px
+94 -> 105 : 33,070 px
+105 -> 94 : 28,591 px
+
+Spatially explicit tectonic metrics
+===================================
+Mean distance: 1120.8 km
+P95 distance: 2213.3 km
+Mean poleward shift: -0.940
+Mean delta altitude: 221.1
+Subduction fraction: 24.24%
+
+Spatially explicit climate metrics
+===================================
+Mean delta temperature: 0.981
+Mean delta precipitation: 30.016
+
+Global Earth-system indicators
+==============================
+delta_CO2_ppm: -7.715e+01 (z=0.05)
+delta_Sea_Level_dSL: 1.378e+01 (z=0.36)
+delta_Coastline_length: 3.162e+07 (z=0.30)
+delta_Continental_Shelves_Area: 8.610e+11 (z=0.11)
+delta_Land_area: 2.222e+11 (z=-0.01)
+delta_Polar_Land_Area: -3.865e+12 (z=-1.38)
+delta_Temperate_Land_Area: 2.170e+12 (z=0.46)
+delta_Subtropical_Land_Area: 4.343e+12 (z=1.11)
+delta_Tropical_Land_Area: -2.391e+12 (z=-0.53)
+delta_High_Altitude_Area: -1.843e+12 (z=-0.88)
+delta_Continents_Number: 1.000e+00 (z=0.94)
+
+Driver interpretation
+====================
+Tectonic influence score: 0.62
+Climate influence score: 0.60
+Continental configuration score: 0.35
+
+Strongest interval anomalies
+----------------------------
+Polar Land Area: Z=-1.38
+median poleward: Z=-1.33
+Subtropical Land Area: Z=1.11
+mean poleward: Z=-1.08
+Continents Number: Z=0.94
+High Altitude Area: Z=-0.88
+subduction fraction: Z=0.85
+normal fraction: Z=-0.84
+survivor fraction: Z=0.81
+Southern Land Area: Z=-0.66
+
+Interpretation
+--------------
+Tectonic indicators are generally close to long-term Phanerozoic background conditions.
+Climate-related indicators remain relatively close to long-term background conditions.
+Continental configuration remained comparatively stable.
+
+Synthesis
+---------
+Primary controls inferred from anomaly strength:
+1. tectonics (0.62)
+2. climate (0.60)
+3. continental_configuration (0.35)
+
+This interpretation does not imply causality at the pixel scale. Rather, it provides an interval-scale explanation for why the overall land-cover transition system and associated Sankey diagram look the way they do.

@@ -1,0 +1,77 @@
+350 → 331 Ma
+
+Major land-cover transitions
+============================
+new_crust -> 99 : 1,202,953 px
+99 -> subducted : 1,190,958 px
+new_crust -> 105 : 215,733 px
+105 -> subducted : 202,238 px
+21 -> 20 : 113,176 px
+20 -> 21 : 104,109 px
+99 -> 21 : 72,836 px
+21 -> 105 : 61,230 px
+21 -> subducted : 42,066 px
+94 -> 21 : 39,634 px
+
+Spatially explicit tectonic metrics
+===================================
+Mean distance: 2149.0 km
+P95 distance: 3363.3 km
+Mean poleward shift: -0.647
+Mean delta altitude: 342.1
+Subduction fraction: 29.19%
+
+Spatially explicit climate metrics
+===================================
+Mean delta temperature: 1.261
+Mean delta precipitation: 30.219
+
+Global Earth-system indicators
+==============================
+delta_CO2_ppm: -1.718e+01 (z=0.17)
+delta_Sea_Level_dSL: -4.684e+01 (z=-0.79)
+delta_Coastline_length: -6.977e+07 (z=-0.84)
+delta_Continental_Shelves_Area: -4.319e+12 (z=-0.51)
+delta_Land_area: 8.237e+12 (z=0.73)
+delta_Polar_Land_Area: 2.544e+12 (z=0.61)
+delta_Temperate_Land_Area: 8.652e+12 (z=1.79)
+delta_Subtropical_Land_Area: 9.743e+11 (z=0.27)
+delta_Tropical_Land_Area: -3.860e+12 (z=-0.86)
+delta_High_Altitude_Area: 8.025e+11 (z=0.46)
+delta_Continents_Number: -1.000e+00 (z=-0.99)
+
+Driver interpretation
+====================
+Tectonic influence score: 1.52
+Climate influence score: 0.64
+Continental configuration score: 0.77
+
+Strongest interval anomalies
+----------------------------
+median distance: Z=2.91
+mean distance: Z=2.61
+Temperate Land Area: Z=1.79
+subduction fraction: Z=1.55
+normal fraction: Z=-1.52
+p95 distance: Z=1.51
+survivor fraction: Z=1.47
+Ridge Depth: Z=1.38
+mean alt: Z=1.21
+median poleward: Z=-0.99
+
+Interpretation
+--------------
+The interval is characterised by exceptionally strong tectonic reorganisation relative to the rest of the Phanerozoic.
+Climate-related indicators remain relatively close to long-term background conditions.
+Continental-scale geographic reorganisation is apparent.
+Crustal displacement distances are among the highest of the entire Phanerozoic time series.
+Subduction activity is unusually high for this transition.
+
+Synthesis
+---------
+Primary controls inferred from anomaly strength:
+1. tectonics (1.52)
+2. continental_configuration (0.77)
+3. climate (0.64)
+
+This interpretation does not imply causality at the pixel scale. Rather, it provides an interval-scale explanation for why the overall land-cover transition system and associated Sankey diagram look the way they do.

@@ -1,0 +1,77 @@
+383 → 370 Ma
+
+Major land-cover transitions
+============================
+new_crust -> 99 : 1,132,871 px
+99 -> subducted : 806,721 px
+106 -> 99 : 471,160 px
+94 -> 21 : 354,008 px
+106 -> subducted : 327,331 px
+94 -> 20 : 217,512 px
+new_crust -> 105 : 75,125 px
+94 -> 99 : 68,072 px
+105 -> subducted : 67,018 px
+98 -> 105 : 53,386 px
+
+Spatially explicit tectonic metrics
+===================================
+Mean distance: 997.7 km
+P95 distance: 2277.7 km
+Mean poleward shift: 0.346
+Mean delta altitude: 226.5
+Subduction fraction: 24.39%
+
+Spatially explicit climate metrics
+===================================
+Mean delta temperature: 13.859
+Mean delta precipitation: 328.699
+
+Global Earth-system indicators
+==============================
+delta_CO2_ppm: -3.466e+02 (z=-0.46)
+delta_Sea_Level_dSL: 6.888e+00 (z=0.23)
+delta_Coastline_length: 9.106e+07 (z=0.98)
+delta_Continental_Shelves_Area: -7.888e+10 (z=-0.00)
+delta_Land_area: 4.335e+11 (z=0.01)
+delta_Polar_Land_Area: 3.888e+12 (z=1.03)
+delta_Temperate_Land_Area: 3.212e+12 (z=0.67)
+delta_Subtropical_Land_Area: -4.963e+12 (z=-1.20)
+delta_Tropical_Land_Area: -1.749e+12 (z=-0.39)
+delta_High_Altitude_Area: -1.161e+12 (z=-0.54)
+delta_Continents_Number: 1.000e+00 (z=0.94)
+
+Driver interpretation
+====================
+Tectonic influence score: 0.42
+Climate influence score: 1.94
+Continental configuration score: 0.43
+
+Strongest interval anomalies
+----------------------------
+median precip: Z=5.17
+mean temp: Z=5.04
+median temp: Z=4.89
+mean precip: Z=4.76
+BQART TSS est: Z=3.07
+ROBART TSS est: Z=2.68
+Subtropical Land Area: Z=-1.20
+Polar Land Area: Z=1.03
+survivor fraction: Z=1.02
+Coastline length: Z=0.98
+
+Interpretation
+--------------
+Tectonic indicators are generally close to long-term Phanerozoic background conditions.
+Global climatic forcing appears unusually strong during this transition.
+Continental configuration remained comparatively stable.
+Pixel-level temperatures rose unusually strongly across displaced land, consistent with enhanced warming pressure.
+Precipitation over displaced land increased unusually strongly, suggesting a shift toward wetter conditions.
+
+Synthesis
+---------
+Primary controls inferred from anomaly strength:
+1. climate (1.94)
+2. continental_configuration (0.43)
+3. tectonics (0.42)
+
+This interpretation does not imply causality at the pixel scale. Rather, it provides an interval-scale explanation for why the overall land-cover transition system and associated Sankey diagram look the way they do.

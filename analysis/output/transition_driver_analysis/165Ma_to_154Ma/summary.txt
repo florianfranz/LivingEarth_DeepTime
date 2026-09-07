@@ -1,0 +1,75 @@
+165 → 154 Ma
+
+Major land-cover transitions
+============================
+99 -> subducted : 676,347 px
+new_crust -> 99 : 674,253 px
+21 -> 20 : 154,795 px
+105 -> subducted : 76,295 px
+21 -> 94 : 76,050 px
+21 -> 99 : 73,818 px
+20 -> 21 : 72,277 px
+99 -> 106 : 69,185 px
+new_crust -> 105 : 66,542 px
+21 -> 105 : 58,861 px
+
+Spatially explicit tectonic metrics
+===================================
+Mean distance: 755.8 km
+P95 distance: 1347.2 km
+Mean poleward shift: 0.631
+Mean delta altitude: 94.7
+Subduction fraction: 16.02%
+
+Spatially explicit climate metrics
+===================================
+Mean delta temperature: -1.224
+Mean delta precipitation: 47.067
+
+Global Earth-system indicators
+==============================
+delta_CO2_ppm: -1.087e+01 (z=0.18)
+delta_Sea_Level_dSL: 5.579e+01 (z=1.15)
+delta_Coastline_length: 5.337e+07 (z=0.55)
+delta_Continental_Shelves_Area: 4.791e+12 (z=0.58)
+delta_Land_area: -8.730e+12 (z=-0.84)
+delta_Polar_Land_Area: -1.592e+12 (z=-0.67)
+delta_Temperate_Land_Area: -4.429e+10 (z=0.00)
+delta_Subtropical_Land_Area: -2.132e+12 (z=-0.50)
+delta_Tropical_Land_Area: -4.942e+12 (z=-1.11)
+delta_High_Altitude_Area: -1.362e+12 (z=-0.64)
+delta_Continents_Number: 2.000e+00 (z=1.91)
+
+Driver interpretation
+====================
+Tectonic influence score: 0.62
+Climate influence score: 0.49
+Continental configuration score: 1.01
+
+Strongest interval anomalies
+----------------------------
+Continents Number: Z=1.91
+median poleward: Z=1.91
+Northern Land Area: Z=-1.51
+median alt: Z=-1.41
+ROBART TSS est: Z=-1.24
+Sea Level dSL: Z=1.15
+BQART TSS est: Z=-1.13
+Tropical Land Area: Z=-1.11
+mean alt: Z=-0.98
+Land area: Z=-0.84
+
+Interpretation
+--------------
+Tectonic indicators are generally close to long-term Phanerozoic background conditions.
+Climate-related indicators remain relatively close to long-term background conditions.
+Continental-scale geographic reorganisation is apparent.
+
+Synthesis
+---------
+Primary controls inferred from anomaly strength:
+1. continental_configuration (1.01)
+2. tectonics (0.62)
+3. climate (0.49)
+
+This interpretation does not imply causality at the pixel scale. Rather, it provides an interval-scale explanation for why the overall land-cover transition system and associated Sankey diagram look the way they do.

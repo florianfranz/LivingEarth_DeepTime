@@ -1,0 +1,75 @@
+94 → 68 Ma
+
+Major land-cover transitions
+============================
+new_crust -> 99 : 658,087 px
+99 -> subducted : 657,950 px
+99 -> 21 : 163,462 px
+21 -> 99 : 119,268 px
+99 -> 94 : 82,096 px
+21 -> 20 : 73,106 px
+20 -> 99 : 68,409 px
+20 -> 21 : 66,937 px
+94 -> 21 : 65,712 px
+94 -> 99 : 45,466 px
+
+Spatially explicit tectonic metrics
+===================================
+Mean distance: 775.5 km
+P95 distance: 1951.8 km
+Mean poleward shift: -0.173
+Mean delta altitude: 239.3
+Subduction fraction: 14.94%
+
+Spatially explicit climate metrics
+===================================
+Mean delta temperature: -0.756
+Mean delta precipitation: -60.151
+
+Global Earth-system indicators
+==============================
+delta_CO2_ppm: nan (z=nan)
+delta_Sea_Level_dSL: nan (z=nan)
+delta_Coastline_length: nan (z=nan)
+delta_Continental_Shelves_Area: nan (z=nan)
+delta_Land_area: nan (z=nan)
+delta_Polar_Land_Area: nan (z=nan)
+delta_Temperate_Land_Area: nan (z=nan)
+delta_Subtropical_Land_Area: nan (z=nan)
+delta_Tropical_Land_Area: nan (z=nan)
+delta_High_Altitude_Area: nan (z=nan)
+delta_Continents_Number: nan (z=nan)
+
+Driver interpretation
+====================
+Tectonic influence score: 0.31
+Climate influence score: 0.64
+Continental configuration score: nan
+
+Strongest interval anomalies
+----------------------------
+mean precip: Z=-1.03
+median precip: Z=-0.88
+median distance: Z=-0.65
+median alt: Z=0.63
+subduction fraction: Z=-0.44
+normal fraction: Z=0.42
+survivor fraction: Z=-0.39
+median temp: Z=-0.37
+mean distance: Z=-0.33
+mean alt: Z=0.30
+
+Interpretation
+--------------
+Tectonic indicators are generally close to long-term Phanerozoic background conditions.
+Climate-related indicators remain relatively close to long-term background conditions.
+Continental configuration remained comparatively stable.
+
+Synthesis
+---------
+Primary controls inferred from anomaly strength:
+1. climate (0.64)
+2. tectonics (0.31)
+3. continental_configuration (nan)
+
+This interpretation does not imply causality at the pixel scale. Rather, it provides an interval-scale explanation for why the overall land-cover transition system and associated Sankey diagram look the way they do.

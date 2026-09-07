@@ -1,0 +1,49 @@
+PHANEROZOIC TIME-SERIES AGGREGATION
+===================================
+Total Intervals Analyzed: 43
+
+1. EXTREME INTERVALS (Highest Driver Scores)
+--------------------------------------------
+
+Tectonic Activity:
+  - Peak Activity: 444→420 Ma (Score: 2.10)
+  - Lowest Activity: 200→180 Ma (Score: 0.13)
+
+Climate Forcing:
+  - Peak Activity: 383→370 Ma (Score: 1.94)
+  - Lowest Activity: 11→6 Ma (Score: 0.14)
+
+Continental Config:
+  - Peak Activity: 113→100 Ma (Score: 2.04)
+  - Lowest Activity: 500→489 Ma (Score: 0.17)
+
+2. VOLATILITY RANKING (Most fluctuating indicators)
+---------------------------------------------------
+  1. Land area (Std Dev: 1.01)
+  2. Continents Number (Std Dev: 1.01)
+  3. Northern Land Area (Std Dev: 1.01)
+  4. Southern Land Area (Std Dev: 1.01)
+  5. High Altitude Area (Std Dev: 1.01)
+  6. Ocean Area (Std Dev: 1.01)
+  7. BQART TSS est (Std Dev: 1.01)
+  8. CO2 ppm (Std Dev: 1.01)
+  9. Coastline length (Std Dev: 1.01)
+  10. Polar Land Area (Std Dev: 1.01)
+
+3. ERA AGGREGATES (Average Driver Scores)
+-----------------------------------------
+
+Paleozoic:
+  - Avg Tectonic Score: 0.94
+  - Avg Climate Score:  0.82
+  - Avg Config Score:   0.59
+
+Mesozoic:
+  - Avg Tectonic Score: 0.52
+  - Avg Climate Score:  0.71
+  - Avg Config Score:   0.90
+
+Cenozoic:
+  - Avg Tectonic Score: 0.98
+  - Avg Climate Score:  0.27
+  - Avg Config Score:   0.49
