@@ -9,7 +9,7 @@ from qgis.core import QgsRasterLayer, QgsProject, QgsCoordinateReferenceSystem
 
 # ===== CONFIG =====
 # Load paths from config.json (not committed to git — see config.example.json)
-CONFIG_PATH = Path(__file__).resolve().parent.parent / "config.json"
+CONFIG_PATH = "C:\Users\franzisf\PycharmProjects\LivingEarth_DeepTime\config.json"
 with open(CONFIG_PATH, "r") as f:
     _config = json.load(f)
 
@@ -142,7 +142,7 @@ for age in ages:
         waterstt_expr = (
             f'(("sea_ice_cover_{age}@1" > 0.1) AND ("palaeogeography_{age}@1" < 0)) * 3 + '
             f'(("sea_ice_cover_{age}@1" <= 0.1) AND ("snow_depth_{age}@1" > 0.01) AND ("palaeogeography_{age}@1" >= 0)) * 2 + '
-            f'(("sea_ice_cover_{age}@1" <= 0.1) AND ("palaeogeography_{age}@1" < 0)) * 1'
+            f'(("sea_ice_cover_{age}@1" <= 0.1) AND ("palaeogeography_{age}@1" < 0)) * 1' # What about sea ice and DEM > 0 --> currently wet soil but how about classifying as snow or land ice ?
         )
         run_calc_aligned([ice, snow, paleo], waterstt_expr, extent, crs, res_x, res_y, waterstt_temp, nodata_val=-9999)
         clean_no_data(waterstt_temp, target_dtype='uint8', fill_value=0)
@@ -184,7 +184,7 @@ for age in ages:
         )
         veg_expr_masked = (
             f'({is_water_mask}) * 0 + '
-            f'(1 - ({is_water_mask})) * (2 - ("forest_cover_{age}@1" > 0.001))'
+            f'(1 - ({is_water_mask})) * (2 - ("forest_cover_{age}@1" > 0.7))'
         )
         run_calc_aligned([paleo, ice, snow, forest], veg_expr_masked, extent, crs, res_x, res_y, veg_temp,
                          nodata_val=-9999)
