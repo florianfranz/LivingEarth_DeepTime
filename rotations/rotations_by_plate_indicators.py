@@ -27,6 +27,12 @@ PALEO_DEM_FILENAME_TEMPLATE = "palaeogeography_{age}.tif"
 PALEO_DEM_BAND = 1
 EARTH_RADIUS_KM = 6371.0
 
+# --- Climate rasters (temperature / precipitation) ---
+CLIMATE_FOLDER = _config["climate_output_folder"]
+TEMPERATURE_FILENAME_TEMPLATE = "temperature_{age}_align.tif"
+PRECIPITATION_FILENAME_TEMPLATE = "precipitation_{age}_align.tif"
+CLIMATE_BAND = 1  # assumption: single-band rasters, same convention as PALEO_DEM_BAND -- adjust if not the case
+
 ESRI_54034 = "ESRI:54034"
 EPSG_4326 = CRS.from_epsg(4326)
 
@@ -136,6 +142,17 @@ def get_paleo_dem_path(age):
     # Same +2000 offset convention as get_raster_path (0 Ma -> "2000")
     year = RASTER_AGE_OFFSET + int(round(age))
     return str(Path(PALEO_FOLDER) / PALEO_DEM_FILENAME_TEMPLATE.format(age=year))
+
+
+def get_temperature_path(age):
+    # Same +2000 offset convention as get_raster_path / get_paleo_dem_path
+    year = RASTER_AGE_OFFSET + int(round(age))
+    return str(Path(CLIMATE_FOLDER) / TEMPERATURE_FILENAME_TEMPLATE.format(age=year))
+
+
+def get_precipitation_path(age):
+    year = RASTER_AGE_OFFSET + int(round(age))
+    return str(Path(CLIMATE_FOLDER) / PRECIPITATION_FILENAME_TEMPLATE.format(age=year))
 
 
 def sample_raster_at_points(xs, ys, transform, array, shape):
@@ -379,11 +396,12 @@ def build_pixel_history(age_from, age_to, band=BAND, save_parquet=False,
 
     Rasters are written on the SOURCE grid (age_from's transform/shape) —
     each output pixel is "this location, at age_from, is about to move by
-    [delta_lat / distance / delta_alt] by age_to". Since every source pixel
-    keeps its own cell (no rasterization needed — arrays already reshape
-    directly to src_shape), there's no overlap-resolution step here, unlike
-    the destination-grid land-cover matrix. Cells with no plate/no valid
-    source code carry the nodata value (-9999).
+    [delta_lat / distance / delta_alt / delta_temp / delta_precip] by age_to".
+    Since every source pixel keeps its own cell (no rasterization needed —
+    arrays already reshape directly to src_shape), there's no
+    overlap-resolution step here, unlike the destination-grid land-cover
+    matrix. Cells with no plate/no valid source code carry the nodata value
+    (-9999).
     """
     print(f"\n{'=' * 60}")
     print(f"PIXEL HISTORY: {age_from} Ma -> {age_to} Ma")
@@ -490,6 +508,7 @@ def build_pixel_history(age_from, age_to, band=BAND, save_parquet=False,
 
     status_code = np.vectorize(STATUS_CODES.get)(status).astype('uint8')
 
+    # --- Altitude (paleo-DEM) ---
     dem_from_path = get_paleo_dem_path(age_from)
     dem_to_path = get_paleo_dem_path(age_to)
 
@@ -512,6 +531,52 @@ def build_pixel_history(age_from, age_to, band=BAND, save_parquet=False,
 
     delta_alt = dest_alt - orig_alt
 
+    # --- Temperature ---
+    temp_from_path = get_temperature_path(age_from)
+    temp_to_path = get_temperature_path(age_to)
+
+    with rasterio.open(temp_from_path) as temp_from:
+        temp_from_array = temp_from.read(CLIMATE_BAND)
+        temp_from_transform = temp_from.transform
+        temp_from_shape = temp_from.shape
+
+    with rasterio.open(temp_to_path) as temp_to:
+        temp_to_array = temp_to.read(CLIMATE_BAND)
+        temp_to_transform = temp_to.transform
+        temp_to_shape = temp_to.shape
+
+    orig_temp, _ = sample_raster_at_points(xs_flat, ys_flat, temp_from_transform, temp_from_array, temp_from_shape)
+
+    dest_temp = np.full(n_pixels, np.nan)
+    _vals, _ib = sample_raster_at_points(rot_xs[valid_dest_mask], rot_ys[valid_dest_mask],
+                                          temp_to_transform, temp_to_array, temp_to_shape)
+    dest_temp[np.where(valid_dest_mask)[0]] = _vals
+
+    delta_temp = dest_temp - orig_temp
+
+    # --- Precipitation ---
+    precip_from_path = get_precipitation_path(age_from)
+    precip_to_path = get_precipitation_path(age_to)
+
+    with rasterio.open(precip_from_path) as precip_from:
+        precip_from_array = precip_from.read(CLIMATE_BAND)
+        precip_from_transform = precip_from.transform
+        precip_from_shape = precip_from.shape
+
+    with rasterio.open(precip_to_path) as precip_to:
+        precip_to_array = precip_to.read(CLIMATE_BAND)
+        precip_to_transform = precip_to.transform
+        precip_to_shape = precip_to.shape
+
+    orig_precip, _ = sample_raster_at_points(xs_flat, ys_flat, precip_from_transform, precip_from_array, precip_from_shape)
+
+    dest_precip = np.full(n_pixels, np.nan)
+    _vals, _ib = sample_raster_at_points(rot_xs[valid_dest_mask], rot_ys[valid_dest_mask],
+                                          precip_to_transform, precip_to_array, precip_to_shape)
+    dest_precip[np.where(valid_dest_mask)[0]] = _vals
+
+    delta_precip = dest_precip - orig_precip
+
     delta_lat_signed = rot_lats - lats
     delta_lat_poleward = np.abs(rot_lats) - np.abs(lats)  # positive = moved toward pole
     distance_km = haversine_km(lons, lats, rot_lons, rot_lats)
@@ -533,6 +598,12 @@ def build_pixel_history(age_from, age_to, band=BAND, save_parquet=False,
         'orig_alt': orig_alt[idx],
         'dest_alt': dest_alt[idx],
         'delta_alt': delta_alt[idx],
+        'orig_temp': orig_temp[idx],
+        'dest_temp': dest_temp[idx],
+        'delta_temp': delta_temp[idx],
+        'orig_precip': orig_precip[idx],
+        'dest_precip': dest_precip[idx],
+        'delta_precip': delta_precip[idx],
         'source_code': src_codes[idx],
         'dest_code': dest_land_cover[idx],
         'status': status[idx],
@@ -551,13 +622,20 @@ def build_pixel_history(age_from, age_to, band=BAND, save_parquet=False,
         print(f"Saved to {out_path}")
 
     if save_raster in ('multiband', 'separate'):
-        band_names = ['delta_lat_signed', 'delta_lat_poleward', 'distance_km', 'delta_alt', 'status_code']
+        band_names = [
+            'delta_lat_signed', 'delta_lat_poleward', 'distance_km',
+            'delta_alt', 'delta_temp', 'delta_precip',
+            'status_code', 'dest_code',
+        ]
         band_arrays = [
             np.where(np.isnan(delta_lat_signed), RASTER_NODATA, delta_lat_signed).reshape(src_shape),
             np.where(np.isnan(delta_lat_poleward), RASTER_NODATA, delta_lat_poleward).reshape(src_shape),
             np.where(np.isnan(distance_km), RASTER_NODATA, distance_km).reshape(src_shape),
             np.where(np.isnan(delta_alt), RASTER_NODATA, delta_alt).reshape(src_shape),
+            np.where(np.isnan(delta_temp), RASTER_NODATA, delta_temp).reshape(src_shape),
+            np.where(np.isnan(delta_precip), RASTER_NODATA, delta_precip).reshape(src_shape),
             status_code.reshape(src_shape).astype('float32'),
+            np.where(np.isnan(dest_land_cover), RASTER_NODATA, dest_land_cover).reshape(src_shape),
         ]
 
         if save_raster == 'multiband':
